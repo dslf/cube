@@ -53,7 +53,9 @@ void parse_argc(int argc, char *argv[]) {
 
 void show_help(int argc, char *argv[]) {
   printf("Usage: %s -f -n -s\nExample: %s \"U L' B R2 U2 F U2\"\n"
-  "\n\n%s -f Filename -n 2\n", argv[0], argv[0], argv[0]);
+  "\n\n%s -f Filename -n 2\n", P_NAME, P_NAME, P_NAME);
+
+  printf("");
        /*  "Usage: %s \"Scramble\"\nExample: %s \"U L' B R2 U2 F U2 B R2 U2 F' "
         "U2 F' D' R U' B' L U' B\"\n\n",
         argv[0], argv[0]); */
