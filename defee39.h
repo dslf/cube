@@ -5,7 +5,7 @@
 #define S_PNAME "scrambles.txt"
 #define C_DATE __DATE__
 #define C_TIME __TIME__
-#define P_VER "v0.09"
+#define P_VER "v0.11"
 
 #define L 0
 #define R 1
