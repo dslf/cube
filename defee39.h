@@ -1,8 +1,11 @@
 #ifndef DEFEE39_H
 #define DEFEE39_H
 
-#define P_NAME "cube" /* Stupid name, will change later */
-#define S_NAME "scrambles.txt" /* Default name for scrambles */
+#define P_NAME "skrambilka" 
+#define S_PNAME "scrambles.txt"
+#define C_DATE __DATE__
+#define C_TIME __TIME__
+#define P_VER "v0.09"
 
 #define L 0
 #define R 1
