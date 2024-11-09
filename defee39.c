@@ -38,8 +38,9 @@ void parse_argc(int argc, char *argv[]) {
 			}
 			found_linenumber = 1;
 			t_line_number = atoi(argv[i + 1]);
-			printf("Line to read %s\n", argv[i + 1]);
+		/* 	printf("Line to read %s\n", argv[i + 1]); */
 		}
+
 		if (strcmp(argv[i], "-s") == 0) {
 			if (argv[i + 1] == NULL) {
 				printf("%s is empty\n", argv[i]);
@@ -57,10 +58,21 @@ void parse_argc(int argc, char *argv[]) {
 		printf("Found file name and file\n");
 		read_line(t_filename, t_line_number);
 	}
+
+	if (!found_filename && found_linenumber){
+		/* no file name, but have line number, so check for defaul file exist */
+		FILE *file = fopen(DEF_SCR_FILENAME, "r");
+		if (file) {				
+			fclose(file);
+			read_line(DEF_SCR_FILENAME, t_line_number);
+		} else {
+			printf("default scrables (%s) not found, please specify with -f FILENAME\n", DEF_SCR_FILENAME);
+
+		}
+	}
 }
 
-void show_help(int argc, char *argv[]) {
-	printf("Skrambilka %s by dslf (%s %s)\n\n", P_VER, C_DATE, C_TIME);
+void show_help(int argc, char *argv[]) {	
 	draw_cube();
 	printf("\nUsage: %s -f FILE -n LINE_NUMBER -s SCRAMBLE\n"
 		"Example: %s \"U L' B R2 U2 F U2\"\n", P_NAME, P_NAME);
@@ -172,34 +184,23 @@ void read_line(const char *filename_to_open, int n) {
 	char line[100];
 	int line_number = 0; /* Line counter */
 
-	/* Open file, read-only */
 	file = fopen(filename_to_open, "r");
 	if (file == NULL) {
 		perror("Error open file");
-		/* return EXIT_FAILURE; Завершаем программу в случае ошибки */
 	}
 
-	/* Читаем строки из файла до конца */
 	while (fgets(line, sizeof(line), file)) {
-		line_number++; /* Увеличиваем счетчик строк */
-		if (line_number == n) { /* Если это третья строка */
+		line_number++;
+		if (line_number == n) { 
 			init_cube();
 			rotate_cube(line);
-			printf("\nScrable from line %d is: \n%s\n", line_number,
-						 line); /* Выводим третью строку */
+			printf("#%d: %s\n", line_number, line); 
 			draw_cube();
 			printf("\n");
-			break; /* Прерываем цикл, так как мы уже получили нужную строку */
+			break; 
 		}
 	}
-
-	/* Закрываем файл */
 	fclose(file);
-
-	/* Проверяем, была ли третья строка найдена */
-	if (line_number < 3) {
-		/*     printf("File has less than three lines.\n"); */
-	}
 }
 
 void reset_color() { printf("\033[0m"); }
