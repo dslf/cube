@@ -1,5 +1,5 @@
 CC=gcc
-CPFLAGS=-std=c89 -Wall
+CFLAGS=-std=c89 -Wall
 
 all: test 
 
