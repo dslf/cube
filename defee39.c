@@ -66,7 +66,7 @@ void parse_argc(int argc, char *argv[]) {
 			fclose(file);
 			read_line(DEF_SCR_FILENAME, t_line_number);
 		} else {
-			printf("default scrables (%s) not found, please specify with -f FILENAME\n", DEF_SCR_FILENAME);
+			printf("(%s) not found, please specify with -f FILENAME\n", DEF_SCR_FILENAME);
 
 		}
 	}
@@ -203,27 +203,17 @@ void read_line(const char *filename_to_open, int n) {
 	fclose(file);
 }
 
-void reset_color() { printf("\033[0m"); }
+void reset_color() { 
+	printf("\033[0m"); /* Default console color */
+}
 
 void set_color(int n) {
-	if (n == 0) {
-		printf("\e[47m");
-	} /* White  */
-	if (n == 1) {
-		printf("\e[43m");
-	} /* Orange */
-	if (n == 2) {
-		printf("\e[42m");
-	} /* Green */
-	if (n == 3) {
-		printf("\e[41m");
-	} /* Red */
-	if (n == 4) {
-		printf("\e[44m");
-	} /* Blue */
-	if (n == 5) {
-		printf("\x1b[48;5;226m");
-	} /* Yellow */
+	if (n == 0) printf("\e[47m"); 				/* White */
+	if (n == 1) printf("\e[43m"); 				/* Orange */ 
+	if (n == 2) printf("\e[42m"); 				/* Green */
+	if (n == 3) printf("\e[41m"); 				/* Red */
+	if (n == 4) printf("\e[44m"); 				/* Blue */
+	if (n == 5) printf("\x1b[48;5;226m"); 		/* Yellow */
 }
 
 void rotate_side(int direction) {
@@ -380,6 +370,7 @@ void rotate_side(int direction) {
 			break;
 	}
 }
+
 void draw_cube() {
 	int i, j, k = 0;
 
