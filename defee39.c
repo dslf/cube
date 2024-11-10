@@ -55,7 +55,7 @@ void parse_argc(int argc, char *argv[]) {
 		}
 	}
 	if (found_filename && found_linenumber) {
-		printf("Found file name and file\n");
+		/* printf("Found file name and file\n"); */
 		read_line(t_filename, t_line_number);
 	}
 
@@ -208,12 +208,12 @@ void reset_color() {
 }
 
 void set_color(int n) {
-	if (n == 0) printf("\e[47m"); 				/* White */
-	if (n == 1) printf("\e[43m"); 				/* Orange */ 
-	if (n == 2) printf("\e[42m"); 				/* Green */
-	if (n == 3) printf("\e[41m"); 				/* Red */
-	if (n == 4) printf("\e[44m"); 				/* Blue */
-	if (n == 5) printf("\x1b[48;5;226m"); 		/* Yellow */
+	if (n == 0) printf("\e[47m");			/* White */
+	if (n == 1) printf("\e[43m");			/* Orange */ 
+	if (n == 2) printf("\e[42m");			/* Green */
+	if (n == 3) printf("\e[41m");			/* Red */
+	if (n == 4) printf("\e[44m");			/* Blue */
+	if (n == 5) printf("\x1b[48;5;226m");	/* Yellow */
 }
 
 void rotate_side(int direction) {
