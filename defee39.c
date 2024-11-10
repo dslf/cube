@@ -74,8 +74,10 @@ void parse_argc(int argc, char *argv[]) {
 
 void show_help(int argc, char *argv[]) {	
 	draw_cube();
-	printf("\nUsage: %s -f FILE -n LINE_NUMBER -s SCRAMBLE\n"
-		"Example: %s \"U L' B R2 U2 F U2\"\n", P_NAME, P_NAME);
+	printf("\nUsage: %s -f FILE -n LINE_NUMBER -s SCRAMBLE\n\n"
+		"Examples:\n%s -s \"U L' B R2 U2 F U2\"\n", P_NAME, P_NAME);
+	printf("%s -f newfile.txt -n 3\n", P_NAME);
+	printf("%s -n 3 (if %s already exist)\n",P_NAME, DEF_SCR_FILENAME);
 	
 }
 
